@@ -14,12 +14,10 @@ export default function CharacterList() {
   useEffect(() => {
     axios.get("https://rickandmortyapi.com/api/character/")
     .then(resp => {
-      console.log(resp.data.results);
       setCharacters(resp.data.results);
     })
     .catch(error => console.log(error));
   }, [])
-  console.log(characters);
 
   return <section className='character-list grid-view'>
     {characters.map(character => <CharacterCard image={character.image} name={character.name} location={character.location.name} />)}
